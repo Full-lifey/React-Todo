@@ -21,21 +21,21 @@ class App extends React.Component {
         id: 1528817084358,
         completed: false
       }],
-      task: '',
-      id: null,
-      completed: false
+      // task: '',
+      // id: null,
+      // completed: 'false'
     }
   }
-  addToDo = event => {
-    event.preventDefault();
+  addToDo = taskName => {
     const newTodo = {
-      task: this.state.task,
+      task: taskName,
       id: Date.now(),
-      completed: this.state.completed
+      completed: false
     };
-    this.setState({
-      toDoList: [...this.state.toDoList, newTodo],
-      task: ''
+    this.setState(prevState => {
+      return {
+        toDoList: [...this.state.toDoList, newTodo]
+      }
     })
   }
 
@@ -44,6 +44,11 @@ class App extends React.Component {
       task: event.target.value
     })
   }
+
+  clearCompleted = () => {
+
+  }
+  
   render() {
     return (
       <div className='todo-app'>
@@ -54,8 +59,8 @@ class App extends React.Component {
         </div>
         <div className='todo-form'>
           <TodoForm 
-            currentState={this.state}
-            handleFormInput={this.handleFormInput}
+            // currentState={this.state}
+            // handleFormInput={this.handleFormInput}
             addToDo={this.addToDo}
           />
         </div>
