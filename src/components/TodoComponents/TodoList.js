@@ -3,12 +3,18 @@
 import React from 'react';
 import Todo from './Todo'
 
+import './Todo.scss'
+
 class TodoList extends React.Component{
     render(){
         return(
-            <div>
+            <div className='todo-items' key={this.props.currentState.id}>
                 {this.props.currentState.toDoList.map(listItemFromMap => (
-                    <Todo itemOnProps={listItemFromMap} />
+                    <Todo
+                    key={this.props.currentState.id}
+                    itemOnProps={listItemFromMap} 
+                    toggleCompleted={this.props.toggleCompleted}
+                    />
                 ))}
             </div>
         )

@@ -4,7 +4,15 @@ class Todo extends React.Component{
 
     render(){
         return(
-            <h4 key={this.props.itemOnProps.id} className={this.props.itemOnProps.completed}>{this.props.itemOnProps.task}</h4>
+            <div 
+                className={`item ${this.props.itemOnProps.completed ? ' completed' : ''}`}
+                onClick={() => this.props.toggleCompleted(this.props.itemOnProps.id)}             
+                >
+                <p>
+                    {this.props.itemOnProps.task}
+                </p>
+                <p>{`Created: ${new Date(this.props.itemOnProps.id).toDateString()}`}</p>
+            </div>
         );
     }
 } 
